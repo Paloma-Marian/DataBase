@@ -1,12 +1,14 @@
 package com.example.auladatabase.repository
 
-import com.example.auladatabase.dao.UserDao;
-import com.example.auladatabase.entity.User;
+import androidx.lifecycle.MutableLiveData
+import com.example.auladatabase.dao.UserDao
+import com.example.auladatabase.entity.User
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch;
-import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class UserRepository (private val userDao:UserDao) {
+class UserRepository(private val userDao: UserDao) {
+
 
     private val coroutine = CoroutineScope(Dispatchers.Main)
 
@@ -14,5 +16,15 @@ class UserRepository (private val userDao:UserDao) {
         coroutine.launch(Dispatchers.IO) {
             userDao.insert(user)
         }
+    }
+
+    fun delete(user: User) {
+        coroutine.launch(Dispatchers.IO) {
+            userDao.delete(user)
+        }
+    }
+
+    suspend fun loadAllUsers(): List<User> {
+        return userDao.getAll()
     }
 }
