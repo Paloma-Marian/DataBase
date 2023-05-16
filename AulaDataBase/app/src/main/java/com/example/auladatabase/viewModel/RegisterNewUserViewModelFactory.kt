@@ -7,6 +7,7 @@ import com.example.auladatabase.database.AppDatabase
 import com.example.auladatabase.repository.UserRepository
 import com.example.auladatabase.viewModel.RegisterNewViewModel
 
+//"Fabrida" de registros para a base de dados
 class RegisterNewUserViewModelFactory(val application: Application) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

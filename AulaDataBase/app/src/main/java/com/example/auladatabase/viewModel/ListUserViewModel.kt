@@ -22,12 +22,14 @@ class ListUserViewModel(private val userRepository: UserRepository): ViewModel()
 
     var userForDelete: User? by mutableStateOf(null)
 
+    //Faz um select na base para trazer os dados salvos na base de usuários
     fun loadAllUsers(){
         viewModelScope.launch {
             users.value = userRepository.loadAllUsers()
         }
     }
 
+    //Deleta na base de dados o usuário selecionado
     fun deleteUser() {
         viewModelScope.launch {
             userForDelete?.let {

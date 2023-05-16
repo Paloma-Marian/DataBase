@@ -7,6 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+//Repositório de dados
 class UserRepository(private val userDao: UserDao) {
 
 

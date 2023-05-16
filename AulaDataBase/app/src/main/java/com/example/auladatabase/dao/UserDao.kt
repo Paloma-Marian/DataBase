@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.auladatabase.entity.User
 
+//Movimentação da base de dados para Deletar, Inserir, Selecionar ...
 @Dao
 interface UserDao {
 

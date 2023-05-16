@@ -31,6 +31,7 @@ class RegisterNewViewModel(private val userRepository: UserRepository): ViewMode
         }
     }
 
+    //registra o usuário na base de dados
     fun registrar(onSuccess: () -> Unit) {
         try {
             validateFields()

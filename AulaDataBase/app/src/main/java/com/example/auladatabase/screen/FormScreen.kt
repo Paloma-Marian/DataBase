@@ -1,6 +1,7 @@
 package com.example.auladatabase.screen
 
 import android.app.Application
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -22,14 +23,17 @@ fun FormScreen(onAfterSave: () -> Unit, onBack:() -> Unit) {
         factory = RegisterNewUserViewModelFactory(application)
     )
 
+    //val ctx = LocalContext.current
+    //feedback para o usuário
     val scaffoldState = rememberScaffoldState()
-
     LaunchedEffect(Unit) {
         viewModel.toastMessage.collectLatest {
             scaffoldState.snackbarHostState.showSnackbar(
                 message = it,
                 duration = SnackbarDuration.Long
             )
+            //opção para mostrar as msg
+            //Toast.makeText(ctx, it, Toast.LENGTH_SHORT).show()
         }
     }
 

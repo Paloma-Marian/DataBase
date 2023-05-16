@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.auladatabase.dao.UserDao
 import com.example.auladatabase.entity.User
 
+//faz a instância da base...
 @Database(entities = [User::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
