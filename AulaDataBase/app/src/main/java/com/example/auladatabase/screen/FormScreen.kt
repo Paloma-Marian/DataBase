@@ -1,7 +1,6 @@
 package com.example.auladatabase.screen
 
 import android.app.Application
-import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -36,9 +35,7 @@ fun FormScreen(onAfterSave: () -> Unit, onBack:() -> Unit) {
         }
     }
 
-
     val focusManager = LocalFocusManager.current
-
 
     Scaffold(scaffoldState = scaffoldState ) {
         Column(
