@@ -3,7 +3,9 @@ package com.example.auladatabase
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -11,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.auladatabase.ui.theme.AulaDataBaseTheme
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
@@ -21,6 +21,9 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import com.example.auladatabase.screen.FormScreen
 import com.example.auladatabase.screen.ListScreen
+import com.example.auladatabase.screen.LoginScreen
+import com.example.auladatabase.viewModel.RegisterNewViewModel
+import com.example.auladatabase.viewModel.RegisterNewUserViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,9 @@ fun MyApp() {
                 Button(onClick = { navController.navigate("form") }) {
                     Text(text = "Add")
                 }
+                Button(onClick = { navController.navigate("login") }) {
+                    Text(text = "Login")
+                }
             }
         }
     ) {
@@ -61,6 +67,21 @@ fun MyApp() {
                 startDestination = "list" ) {
                 composable("list") {
                     ListScreen()
+                }
+                composable("login") {
+                    LoginScreen(
+                        onBack = {
+                            navController.navigateUp()
+                        },
+                        onAfterLogin = {
+                            navController.navigate("list")
+                            coroutineScope.launch {
+                                scaffoldState.snackbarHostState.showSnackbar(
+                                    message = "Login ok"
+                                )
+                            }
+                        }
+                    )
                 }
                 composable("form") {
                     FormScreen(onAfterSave = {

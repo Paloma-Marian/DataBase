@@ -22,8 +22,7 @@ fun FormScreen(onAfterSave: () -> Unit, onBack:() -> Unit) {
     val viewModel: RegisterNewViewModel = viewModel(
         factory = RegisterNewUserViewModelFactory(application)
     )
-
-    //val ctx = LocalContext.current
+    val ctx = LocalContext.current
     //feedback para o usuário
     val scaffoldState = rememberScaffoldState()
     LaunchedEffect(Unit) {
@@ -32,10 +31,11 @@ fun FormScreen(onAfterSave: () -> Unit, onBack:() -> Unit) {
                 message = it,
                 duration = SnackbarDuration.Long
             )
-            //opção para mostrar as msg
-            //Toast.makeText(ctx, it, Toast.LENGTH_SHORT).show()
+            // opção para mostrar as mensagens
+            // Toast.makeText(ctx, it, Toast.LENGTH_SHORT).show()
         }
     }
+
 
     val focusManager = LocalFocusManager.current
 
@@ -71,6 +71,7 @@ fun FormScreen(onAfterSave: () -> Unit, onBack:() -> Unit) {
             )
             Row() {
                 Button(onClick = {
+
                     focusManager.clearFocus()
                     viewModel.registrar(onSuccess = {
                         onAfterSave()
@@ -85,7 +86,6 @@ fun FormScreen(onAfterSave: () -> Unit, onBack:() -> Unit) {
                     }) {
                     Text(text = "Back")
                 }
-
 
             }
 
