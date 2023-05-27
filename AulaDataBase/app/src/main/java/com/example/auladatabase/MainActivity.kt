@@ -53,7 +53,7 @@ fun MyApp() {
         topBar = {
             TopAppBar() {
                 Button(onClick = { navController.navigate("form") }) {
-                    Text(text = "Add")
+                    Text(text = "Add Usuário")
                 }
                 Button(onClick = { navController.navigate("login") }) {
                     Text(text = "Login")
